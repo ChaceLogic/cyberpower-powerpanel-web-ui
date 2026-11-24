@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CyberPower UPS Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<h1>CyberPower UPS Dashboard</h1>
+<p class="status">
+    UPS Monitoring and Control
+    | Auto-refresh every 15 seconds
+</p>
+
+<div class="container">
+
+    <div class="card">
+        <h2>UPS Status</h2>
+        <button onclick="loadData('status')">
+            Refresh Status
+        </button>
+        <pre id="status">Loading...</pre>
+    </div>
+
+    <div class="card">
+        <h2>UPS Configuration</h2>
+        <button onclick="loadData('config')">
+            Refresh Configuration
+        </button>
+        <pre id="config">Loading...</pre>
+    </div>
+
+    <div class="card">
+        <h2>Alarm Control</h2>
+
+        <div id="alarmState" class="alarm-state">
+            Loading...
+        </div>
+
+        <button id="alarmToggle" onclick="toggleAlarm()" disabled>
+            Loading...
+        </button>
+
+        <p class="status">
+            Current alarm configuration
+        </p>
+
+        <div class="output-title">Command Output</div>
+        <pre id="alarmOutput">Waiting...</pre>
+    </div>
+
+    <div class="card">
+        <h2>Mute Alarm</h2>
+
+        <p class="status">
+            Temporarily mute an active UPS alarm.
+        </p>
+
+        <button class="blue" id="muteButton" onclick="muteAlarm()">
+            Mute Alarm
+        </button>
+
+        <div class="output-title">Command Output</div>
+        <pre id="muteOutput">Waiting...</pre>
+    </div>
+
+    <div class="card">
+        <h2>UPS Self-Test</h2>
+
+        <p class="status">
+            Test UPS operation on battery power.
+        </p>
+
+        <button id="testButton" onclick="selfTest()">
+            Run Self-Test
+        </button>
+
+        <div class="output-title">Command Output</div>
+        <pre id="testOutput">Waiting...</pre>
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+
+</body>
+</html>
